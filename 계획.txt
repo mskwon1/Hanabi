@@ -1,0 +1,13 @@
+GUI - javafx
+
+Card
+Player
+
+HintChecker
+HintGiver
+
+Deck
+Grave
+Upcards
+
+GameManager
