@@ -1,0 +1,20 @@
+package board;
+
+import java.util.Stack;
+
+import entity.Card;
+
+public class Deck {
+	private Stack<Card> cards;
+	
+	public Card getTopCard() {
+		return cards.pop();
+	}
+	
+	public void shuffle() {
+		Card[] tempCards = (Card[]) cards.toArray();
+		cards.clear();
+		
+		int index = (int)(Math.random()*tempCards.length) + 1;
+	}
+}

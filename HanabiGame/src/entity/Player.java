@@ -1,5 +1,39 @@
 package entity;
 
-public class Player {
+import java.util.ArrayList;
 
+public class Player {
+	private ArrayList<Card> hand;
+	private String name;
+	private int score;
+	
+	public Player(String name) {
+		this.hand = new ArrayList<Card>();
+		this.name = name;
+		this.score = 0;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public ArrayList<Card> getHand() {
+		return hand;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setHand(ArrayList<Card> hand) {
+		this.hand = hand;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 }

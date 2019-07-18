@@ -1,0 +1,23 @@
+package board;
+
+import entity.Card;
+
+public class Upcards {
+	private boolean[] red;
+	private boolean[] green;
+	private boolean[] white;
+	private boolean[] yellow;
+	private boolean[] blue;
+	
+	public Upcards() {
+		red = new boolean[5];
+		green = new boolean[5];
+		white = new boolean[5];
+		yellow = new boolean[5];
+		blue = new boolean[5];
+	}
+	
+	public boolean testCard(Card card) {
+		String name = card.getColor().name();
+	}
+}

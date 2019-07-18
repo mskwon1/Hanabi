@@ -1,0 +1,49 @@
+package board;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Stack;
+
+import entity.Card;
+import entity.Color;
+
+public class Deck {
+	private Stack<Card> cards;
+	
+	public Card getTopCard() {
+		return cards.pop();
+	}
+	
+	public 
+	
+	public void shuffle() {
+		ArrayList<Card> tempCards = new ArrayList<Card>();
+		
+		while (!cards.isEmpty()) {
+			tempCards.add(cards.pop());
+		}
+		
+		while (tempCards.isEmpty()) {
+			int index = (int)(Math.random()*tempCards.size()) + 1;
+			cards.push(tempCards.remove(index));
+		}
+	}
+	
+	public void putCards(ArrayList<Card> newCards) {
+		cards.addAll(newCards);		
+		shuffle();
+	}
+	
+	public static void main(String[] args) {
+		Deck testDeck = new Deck();
+		ArrayList<Card> testCards = new ArrayList<Card>();
+		
+		for (int i=0;i<5;i++) {
+			testCards.add(new Card(i,Color.valueOf("RED")));
+		}
+		
+		testDeck.putCards(testCards);
+		
+		System.out.println(testDeck.toString());
+	}
+}

@@ -1,0 +1,51 @@
+package board;
+
+import entity.Card;
+
+public class Upcards {
+	private boolean[] red;
+	private boolean[] green;
+	private boolean[] white;
+	private boolean[] yellow;
+	private boolean[] blue;
+	
+	public Upcards() {
+		red = new boolean[5];
+		green = new boolean[5];
+		white = new boolean[5];
+		yellow = new boolean[5];
+		blue = new boolean[5];
+	}
+	
+	public boolean testCard(Card card) {
+		String name = card.getColor().name();
+		
+		switch (name) {
+		case "RED":
+			if (red[card.getNum()]) {
+				/*
+				 * 오류처리 (이미 있는 카드)
+				 */
+				return false;
+			} else {
+				red[card.getNum()] = true;
+				return true;
+			}
+				
+			break;
+		case "GREEN":
+			break;
+		case "WHITE":
+			break;
+		case "YELLOW":
+			break;
+		case "BLUE":
+			break;
+		default:
+			/*
+			 * 오류처리
+			 */
+			break;
+		}
+	}
+}
