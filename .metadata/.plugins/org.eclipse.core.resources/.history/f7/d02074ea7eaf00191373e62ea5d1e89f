@@ -1,0 +1,16 @@
+package logic;
+
+import entity.Player;
+
+public class TurnManager {
+	private int turnCount;
+	private Player currentPlayer;
+	
+	public TurnManager() {
+		this.turnCount = 0;
+	}
+	
+	public void playTurn() {
+		
+	}
+}

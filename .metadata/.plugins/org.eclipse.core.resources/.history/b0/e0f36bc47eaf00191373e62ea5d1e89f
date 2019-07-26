@@ -1,0 +1,6 @@
+package logic;
+
+public class TurnManager {
+	private int turnCount;
+	private Player currentTurn;
+}

@@ -1,9 +1,0 @@
-package board;
-
-public class Upcards {
-	private boolean[] red;
-	private boolean[] green;
-	private boolean[] white;
-	private boolean[] yellow;
-	private boolean[] blue;
-}

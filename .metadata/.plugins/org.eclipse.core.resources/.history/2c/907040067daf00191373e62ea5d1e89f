@@ -1,0 +1,14 @@
+package logic;
+
+public class TokenManager {
+	private final int BLUE_DEFAULT = 8;
+	private final int RED_DEFAULT = 3;
+	
+	private int blueToken;
+	private int redToken;
+	
+	public TokenManager() {
+		blueToken = BLUE_DEFAULT;
+		redToken = RED_DEFAULT;
+	}
+}

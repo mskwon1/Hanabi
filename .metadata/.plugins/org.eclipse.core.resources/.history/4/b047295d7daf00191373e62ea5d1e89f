@@ -1,0 +1,35 @@
+package logic;
+
+public class TokenManager {
+	private static final int BLUE_DEFAULT = 8;
+	private static final int RED_DEFAULT = 3;
+	
+	private int blueToken;
+	private int redToken;
+	
+	public TokenManager() {
+		blueToken = BLUE_DEFAULT;
+		redToken = RED_DEFAULT;
+	}
+	
+	public boolean useBlue() {
+		if (blueToken >= 1) {
+			blueToken--;
+			return true;
+		} else {
+			/*
+			 * 사용가능 토큰 없음
+			 */
+			return false;
+		}
+	}
+	
+	public boolean addBlue() {
+		if (blueToken == 8) {
+			/*
+			 * 더이상 힌트 토큰 얻을 수 없음
+			 */
+			return false;
+		}
+	}
+}

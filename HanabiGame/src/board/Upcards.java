@@ -3,18 +3,20 @@ package board;
 import entity.Card;
 
 public class Upcards {
-	private boolean[] red;
-	private boolean[] green;
-	private boolean[] white;
-	private boolean[] yellow;
-	private boolean[] blue;
+	private boolean[] red = new boolean[5];
+	private boolean[] green = new boolean[5];;
+	private boolean[] white = new boolean[5];;
+	private boolean[] yellow = new boolean[5];;
+	private boolean[] blue = new boolean[5];;
 	
 	public Upcards() {
-		red = new boolean[5];
-		green = new boolean[5];
-		white = new boolean[5];
-		yellow = new boolean[5];
-		blue = new boolean[5];
+		for (int i=0; i<5; i++) {
+			red[i] = false;
+			green[i] = false;
+			white[i] = false;
+			yellow[i] = false;
+			blue[i] = false;
+		}
 	}
 	
 	public boolean putCard(Card card) {
@@ -22,43 +24,54 @@ public class Upcards {
 		
 		switch (name) {
 		case "RED":
-			if (red[card.getNum()]) {
-				/*
-				 * 오류처리 (이미 있는 카드)
-				 */
-				return false;
-			} else {
-				red[card.getNum()] = true;
-				return true;
+			for (int i=0; i<card.getNum()-1; i++) {
+				if (!red[i]) {
+					return false;
+				}
 			}
+			
+			red[card.getNum()-1] = true;
+			return true;
+			
 		case "GREEN":
-			if (green[card.getNum()]) {
-				return false;
-			} else {
-				green[card.getNum()] = true;
-				return true;
+			for (int i=0; i<card.getNum()-1; i++) {
+				if (!green[i]) {
+					return false;
+				}
 			}
+			
+			green[card.getNum()-1] = true;
+			return true;
+			
 		case "WHITE":
-			if (white[card.getNum()]) {
-				return false;
-			} else {
-				white[card.getNum()] = true;
-				return true;
+			for (int i=0; i<card.getNum()-1; i++) {
+				if (!white[i]) {
+					return false;
+				}
 			}
+			
+			white[card.getNum()-1] = true;
+			return true;
+			
 		case "YELLOW":
-			if (yellow[card.getNum()]) {
-				return false;
-			} else {
-				yellow[card.getNum()] = true;
-				return true;
+			for (int i=0; i<card.getNum()-1; i++) {
+				if (!yellow[i]) {
+					return false;
+				}
 			}
+			
+			yellow[card.getNum()-1] = true;
+			return true;
+			
 		case "BLUE":
-			if (blue[card.getNum()]) {
-				return false;
-			} else {
-				blue[card.getNum()] = true;
-				return true;
+			for (int i=0; i<card.getNum()-1; i++) {
+				if (!blue[i]) {
+					return false;
+				}
 			}
+			
+			blue[card.getNum()-1] = true;
+			return true;
 		default:
 			/*
 			 * 오류처리 (색깔 정보가 잘못됨)
