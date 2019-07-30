@@ -1,0 +1,30 @@
+package board;
+
+import java.util.LinkedList;
+
+import entity.Card;
+
+public class Grave {
+	private LinkedList<Card> cards;
+	
+	public Grave() {
+		cards = new LinkedList<Card>();
+	}
+	
+	public void addCard(Card card) {
+		cards.add(card);
+	}
+
+	public int[][] getGraveCards(int NUM_COLORS) {
+		int[][] graveCards = new int[NUM_COLORS][5];
+		
+		for (Card card : cards) {
+			int colorIndex = card.getColor().ordinal();
+			int numIndex = card.getNum();
+			
+			graveCards[colorIndex][numIndex]++;
+		}
+		
+		return graveCards;
+	}
+}

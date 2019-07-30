@@ -1,0 +1,28 @@
+package board;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
+import entity.Card;
+
+public class Grave {
+	private int[][] cards;
+	
+	public Grave(int NUM_COLORS) {
+		cards = new int[NUM_COLORS][5];
+	}
+	
+	public void addCard(Card card) {
+		int colorIndex = card.getColor().ordinal();
+		int numIndex = card.getNum();
+		
+		cards[colorIndex][numIndex]++;
+	}
+
+	public int[][] getGraveCards(int NUM_COLORS) {
+		int[][] graveCards = Arrays.copyOf(cards, cards.length);
+		
+		
+		return graveCards;
+	}
+}

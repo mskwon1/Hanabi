@@ -34,7 +34,7 @@ public class Player {
 		
 		result += "----------------------\nCard List\n";
 		for (Card card : hand) {
-			result += card + "\n";
+			result += card.printWithKnownHint() + "\n";
 		}
 		result += "----------------------";
 		return result;

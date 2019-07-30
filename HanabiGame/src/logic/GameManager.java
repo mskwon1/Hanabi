@@ -14,11 +14,18 @@ import entity.Color;
 import entity.Player;
 
 public class GameManager {
+	private static final int MAX_SCORE = 25;
+	private static final int NUM_COLORS = 5;
+	
 	private List<Player> players;
 	private HintManager hintManager;
 	private TokenManager tokenManager;
 	private Queue<Player> turnQueue;
 	private int turnCount;
+	private int score;
+	
+	private boolean end;
+	private int endCounter;
 	
 	private Deck deck;
 	private Grave grave;
@@ -36,22 +43,31 @@ public class GameManager {
 		tokenManager = new TokenManager();
 		
 		turnCount = 1;
+		score = 0;
+		
+		end = false;
+		endCounter = players.size()+1;
 		
 		deck = new Deck();
-		grave = new Grave();
-		upcards = new Upcards();
+		grave = new Grave(NUM_COLORS);
+		upcards = new Upcards(NUM_COLORS);
 		
 		scanner = new Scanner(System.in);
 	}
 	
 	public void startGame() {
 		initialHandout();
-		boolean end = false;
 		
 		while (!end) {
 			Player currentPlayer = turnQueue.poll();
 			playTurn(currentPlayer);
 			turnQueue.add(currentPlayer);
+		}
+		
+		if (score == MAX_SCORE) {
+			System.out.println("YOU WIN ... your final score : " + score);
+		} else {
+			System.out.println("GAME OVER ... your final score : " + score);
 		}
 		
 		scanner.close();
@@ -67,10 +83,13 @@ public class GameManager {
 	
 	private void playTurn(Player player) {
 		showCards(player);
+		showOnCards();
 		
 		System.out.println();
 		System.out.println("Player " + player.getName() + "'s turn (turn " + turnCount + ")");
-		System.out.println("Blue token : " + tokenManager.getBlueToken() + ", Red token : " + tokenManager.getRedToken());
+		System.out.println("Blue token : " + tokenManager.getBlueToken() + 
+				", Red token : " + tokenManager.getRedToken() + ", " +
+				deck.getCount() + " cards left in deck");
 		int choice = getPlayerChoice();
 		
 		switch (choice) {
@@ -84,7 +103,26 @@ public class GameManager {
 			putMenu(player);
 			break;
 		}
-
+		
+		turnCount++;
+		
+		/*
+		 * 카드 다썼으면 카운터 마이너스
+		 */
+		if (deck.getCount() == 0) {
+			endCounter--;
+		}
+		
+		/*
+		 * 종료조건 확인
+		 */
+		if (score == MAX_SCORE || endCounter == 0 || tokenManager.getRedToken() == 0) {
+			/*
+			 * 최대점수를 달성하거나, 카드 다쓰고 한바퀴 돌았거나, 빨간토큰을 다쓴 경우
+			 */
+			end = true;
+		}
+		
 		System.out.println();
 	}
 	
@@ -96,12 +134,16 @@ public class GameManager {
 			System.out.println("1. Give hint");
 			System.out.println("2. Discard your card");
 			System.out.println("3. Put your card on the board");
+			System.out.println("4. See grave cards");
 			System.out.println("-------------------------------");
 			System.out.print("Choose your action : ");
 		
 			choice = scanner.nextInt();
 			
-			if (choice == 1 || choice == 2 || choice == 3) {
+			if (choice == 4) {
+				showGrave();
+			}
+			else if (choice >= 1 && choice <= 3) {
 				break;
 			} else {
 				/*
@@ -192,7 +234,6 @@ public class GameManager {
 			
 			if (valid) {
 				tokenManager.useBlue();
-				turnCount++;
 				break;
 			} else {
 				/*
@@ -218,15 +259,9 @@ public class GameManager {
 			System.out.print("Please input which card to discard by number : ");
 			int input = scanner.nextInt() - 1;
 			
-			if (input >= 1 && input <= currentPlayer.getHand().size()) {
+			if (input >= 0 && input <= currentPlayer.getHand().size()-1) {
 				Card targetCard = currentPlayer.getHand().get(input);
 				grave.addCard(targetCard);
-
-				if (deck.getCount() == 1) {
-					/*
-					 * 지금 플레이어의 다음 턴을 마지막으로 게임이 끝남
-					 */
-				}
 				
 				Card newCard = deck.getTopCard();
 				
@@ -236,6 +271,7 @@ public class GameManager {
 					/*
 					 * 남은 카드가 없음
 					 */
+					currentPlayer.getHand().remove(input);
 				}
 				
 				break;
@@ -266,15 +302,20 @@ public class GameManager {
 					tokenManager.useRed();
 					grave.addCard(targetCard);
 				} else {
+					/*
+					 * 카드 놓기 성공
+					 */
 					System.out.println("Card " + targetCard + " put on the board");
+					score++;
+					
+					if (targetCard.getNum() == 5) {
+						/*
+						 * 5번 카드를 놓는데 성공한경우
+						 */
+						tokenManager.addBlue();
+					}
 				}
 
-				if (deck.getCount() == 1) {
-					/*
-					 * 지금 플레이어의 다음 턴을 마지막으로 게임이 끝남
-					 */
-				}
-				
 				Card newCard = deck.getTopCard();
 				
 				if (newCard != null) {
@@ -318,6 +359,35 @@ public class GameManager {
 			}
 		}
 
+	}
+	
+	private void showOnCards() {
+		int[] onCards = upcards.getOnCards();
+		
+		System.out.println();
+		System.out.println("Card on the board");
+		System.out.println("----------------------");
+		
+		for (int i=0; i<NUM_COLORS; i++) {
+			System.out.println(Color.values()[i] + " : " + onCards[i]);
+		}
+	}
+	
+	private void showGrave() {
+		int[][] graveCards = grave.getGraveCards();
+		
+		System.out.println();
+		System.out.println("GRAVE CARDS");
+		System.out.println("-------------------------------");
+
+		System.out.println("\t1 2 3 4 5");
+		for (int i=0;i<NUM_COLORS;i++) {
+			System.out.print(Color.values()[i] + "\t");
+			for (int j=0;j<5;j++) {
+				System.out.print(graveCards[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 	
 	public static void main(String[] args) {

@@ -1,0 +1,19 @@
+package board;
+
+import entity.Card;
+
+public class Upcards {
+	private int[] onCards = {0,0,0,0,0};
+	
+	public Upcards() {
+
+	}
+	
+	public boolean putCard(Card card) {
+		int index = card.getColor().ordinal();
+		
+		if (onCards[index]+1 == card.getNum()) {
+			
+		}
+	}
+}

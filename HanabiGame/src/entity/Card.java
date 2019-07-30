@@ -60,4 +60,11 @@ public class Card {
 		
 		return result;
 	}
+	
+	public String printWithKnownHint() {
+		String result = "";
+		result += "NUM : " + num + (isNumHint() ? "(Known)" : "") + " \tCOLOR : " + color + (isColorHint() ? "(Known)" : "");
+		
+		return result;
+	}
 }
