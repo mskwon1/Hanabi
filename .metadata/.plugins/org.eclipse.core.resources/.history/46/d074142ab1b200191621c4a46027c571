@@ -1,0 +1,10 @@
+package ui;
+
+import application.Hanabi;
+
+public class RootLayoutController {
+	private HanabiAssistant assistant;
+	
+	@FXML
+	
+}
