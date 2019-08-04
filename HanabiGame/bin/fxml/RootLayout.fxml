@@ -6,14 +6,14 @@
 
 <AnchorPane minHeight="800.0" minWidth="1280.0" prefHeight="180.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RootLayoutController">
      <children>
-        <AnchorPane layoutX="339.0" layoutY="126.0" minHeight="250.0" minWidth="700.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0" />
-        <AnchorPane layoutX="265.0" layoutY="596.0" minHeight="250.0" minWidth="700.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-        <AnchorPane layoutX="547.0" layoutY="401.0" minWidth="250.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="449.0" AnchorPane.topAnchor="300.0" />
-        <Button layoutX="867.0" layoutY="479.0" mnemonicParsing="false" prefWidth="176.0" text="See Grave" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="450.0">
+        <AnchorPane fx:id="partnerHand" layoutX="205.0" layoutY="37.0" minHeight="250.0" minWidth="700.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="37.0" />
+        <AnchorPane fx:id="myHand" layoutX="265.0" layoutY="596.0" minHeight="250.0" minWidth="700.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+        <AnchorPane fx:id="upboardPane" layoutX="547.0" layoutY="401.0" minWidth="250.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="449.0" AnchorPane.topAnchor="300.0" />
+        <Button fx:id="graveButton" layoutX="867.0" layoutY="479.0" mnemonicParsing="false" prefWidth="176.0" text="See Grave" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="450.0">
            <font>
               <Font size="20.0" />
            </font>
         </Button>
-        <AnchorPane layoutX="848.0" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="300.0" />
-        <AnchorPane layoutX="143.0" layoutY="357.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="850.0" AnchorPane.topAnchor="300.0" />
+        <AnchorPane fx:id="tokenPane" layoutX="848.0" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="300.0" />
+        <AnchorPane fx:id="scorePane" layoutX="143.0" layoutY="357.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="850.0" AnchorPane.topAnchor="300.0" />
      </children></AnchorPane>
