@@ -6,34 +6,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane minHeight="250.0" minWidth="880.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+<AnchorPane minHeight="250.0" minWidth="880.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HandPaneController">
    <children>
       <VBox prefHeight="250.0" prefWidth="880.0">
          <children>
             <HBox minHeight="180.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnCard1" minHeight="180.0" minWidth="176.0" mnemonicParsing="false">
+                  <Button fx:id="btnCard1" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" onAction="#handleBtn1">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCard2" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" >
+                  <Button fx:id="btnCard2" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" onAction="#handleBtn2">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCard3" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" >
+                  <Button fx:id="btnCard3" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" onAction="#handleBtn3">
                   	<font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCard4" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" >
+                  <Button fx:id="btnCard4" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" onAction="#handleBtn4">
                   	<font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCard5" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" >
+                  <Button fx:id="btnCard5" minHeight="180.0" minWidth="176.0" mnemonicParsing="false" onAction="#handleBtn5">
                   	<font>
                         <Font size="20.0" />
                     </font>
@@ -42,8 +41,10 @@
             </HBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnDiscard" layoutX="14.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" text="Discard" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                  <Button fx:id="btnPutOnBoard" layoutX="677.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" text="Put On Board" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="btnDiscard" layoutX="14.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#handleDiscard" text="Discard" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="btnPutOnBoard" layoutX="677.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#handlePutOnBoard" text="Put On Board" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="btnGiveNumHint" layoutX="660.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#handleGiveNumHint" text="Number Hint" visible="false" />
+                  <Button fx:id="btnGiveColorHint" layoutX="770.0" layoutY="10.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#handleGiveColorHint" text="Color Hint" visible="false" />
                </children>
             </AnchorPane>
          </children>

@@ -55,22 +55,71 @@ public class GameManager {
 		scanner = new Scanner(System.in);
 	}
 	
+	
+	
 	public void startGame() {
 		initialHandout();
 		
-		while (!end) {
-			Player currentPlayer = turnQueue.poll();
-			playTurn(currentPlayer);
-			turnQueue.add(currentPlayer);
-		}
-		
-		if (score == MAX_SCORE) {
-			System.out.println("YOU WIN ... your final score : " + score);
-		} else {
-			System.out.println("GAME OVER ... your final score : " + score);
-		}
+//		while (!end) {
+//			Player currentPlayer = turnQueue.poll();
+//			playTurn(currentPlayer);
+//			turnQueue.add(currentPlayer);
+//		}
+//		
+//		if (score == MAX_SCORE) {
+//			System.out.println("YOU WIN ... your final score : " + score);
+//		} else {
+//			System.out.println("GAME OVER ... your final score : " + score);
+//		}
 		
 		scanner.close();
+	}
+	
+	public void discard(Player player, int index) {
+		Card targetCard = player.getHand().get(index);
+		grave.addCard(targetCard);
+		
+		Card newCard = deck.getTopCard();
+		
+		if (newCard != null) {
+			player.getHand().set(index, newCard);
+		} else {
+			player.getHand().remove(index);
+		}
+	}
+	
+	public void putOnBoard(Player player, int index) {
+		Card targetCard = player.getHand().get(index);
+		if(!upcards.putCard(targetCard)) {
+			tokenManager.useRed();
+			grave.addCard(targetCard);
+		} else {
+			score++;
+			
+			if (targetCard.getNum() == 5) {
+				tokenManager.addBlue();
+			}
+		}
+		
+		Card newCard = deck.getTopCard();
+		
+		if (newCard != null) {
+			player.getHand().set(index, newCard);
+		} else {
+			player.getHand().remove(index);
+		}
+	}
+	
+	public void giveColorHint(Player player, int index) {
+		Card targetCard = player.getHand().get(index);
+		
+		hintManager.checkHint(targetCard.getColor(), player);
+	}
+	
+	public void giveNumHint(Player player, int index) {
+		Card targetCard = player.getHand().get(index);
+		
+		hintManager.checkHint(targetCard.getNum(), player);
 	}
 	
 	private void initialHandout() {
@@ -388,6 +437,10 @@ public class GameManager {
 			}
 			System.out.println();
 		}
+	}
+	
+	public List<Player> getPlayer() {
+		return players;
 	}
 	
 	public static void main(String[] args) {

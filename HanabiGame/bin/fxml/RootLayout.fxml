@@ -14,6 +14,11 @@
               <Font size="20.0" />
            </font>
         </Button>
-        <AnchorPane fx:id="tokenPane" layoutX="848.0" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="300.0" />
+        <AnchorPane fx:id="tokenPane" layoutX="848.0" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="300.0" />
         <AnchorPane fx:id="scorePane" layoutX="143.0" layoutY="357.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="850.0" AnchorPane.topAnchor="300.0" />
+      <Button fx:id="endButton" layoutX="873.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleTurnEnd" prefWidth="176.0" text="End Turn" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="380.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
      </children></AnchorPane>

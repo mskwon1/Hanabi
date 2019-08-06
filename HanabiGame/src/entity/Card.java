@@ -16,6 +16,13 @@ public class Card {
 	public int getNum() {
 		return num;
 	}
+	
+	public String getNumWithHint() {
+		String result = "";
+		result += (numHint) ? num : "?";
+		
+		return result;
+	}
 
 	public void setNum(int num) {
 		this.num = num;
@@ -25,6 +32,13 @@ public class Card {
 		return color;
 	}
 
+	public String getColorWithHint() {
+		String result = "";
+		result += (colorHint) ? color : "?";
+		
+		return result;
+	}
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}

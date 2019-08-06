@@ -1,0 +1,110 @@
+package ui;
+
+import java.util.ArrayList;
+
+import application.HanabiAssistant;
+import entity.Card;
+import entity.Player;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+
+public class HandPaneController {
+	private Player player;
+	private boolean isMyHand = false;
+	
+	@FXML
+	private Button btnCard1;
+	@FXML
+	private Button btnCard2;
+	@FXML
+	private Button btnCard3;
+	@FXML
+	private Button btnCard4;
+	@FXML
+	private Button btnCard5;
+	
+	private ArrayList<Button> buttons;
+	
+	@FXML
+	private Button btnDiscard;
+	@FXML
+	private Button btnPutOnBoard;
+	@FXML
+	private Button btnGiveNumHint;
+	@FXML
+	private Button btnGiveColorHint;
+	
+	public HandPaneController() {
+	
+	}
+	
+	public void setHand(Player player) {
+		this.player = player;
+		ArrayList<Card> tempHand = player.getHand();
+		
+		for (int i=0;i<tempHand.size();i++) {
+			if (this.isMyHand) {
+				buttons.get(i).setText(tempHand.get(i).getNumWithHint());
+				setColor(buttons.get(i), tempHand.get(i).getColorWithHint());
+			} else {
+				String temp = "";
+				temp += tempHand.get(i).getNum();
+				buttons.get(i).setText(temp);
+				setColor(buttons.get(i), tempHand.get(i).getColor().name());
+			}
+		}
+	}
+	
+	private void setColor(Button button, String color) {
+		switch (color) {
+		case "RED":
+			button.setStyle("-fx-base: red; -fx-font-size:50px;");
+			break;
+		case "BLUE":
+			button.setStyle("-fx-base: blue; -fx-font-size:50px;");
+			break;
+		case "GREEN":
+			button.setStyle("-fx-base: green; -fx-font-size:50px;");
+			break;
+		case "BLACK":
+			button.setStyle("-fx-base: black; -fx-font-size:50px;");
+			break;
+		case "YELLOW":
+			button.setStyle("-fx-base: yellow; -fx-font-size:50px;");
+			break;
+		case "?":
+			button.setStyle("-fx-base: white; -fx-font-size:50px;");
+			break;
+		}
+	}
+	
+	public void setMyHand() {
+		isMyHand = true;
+		
+		btnDiscard.setVisible(false);
+		btnPutOnBoard.setVisible(false);
+		btnGiveNumHint.setVisible(true);
+		btnGiveColorHint.setVisible(true);
+	}
+	
+	public void setPartnerHand() {
+		isMyHand = false;
+		
+		btnDiscard.setVisible(true);
+		btnPutOnBoard.setVisible(true);
+		btnGiveNumHint.setVisible(false);
+		btnGiveColorHint.setVisible(false);
+	}
+	
+	@FXML
+	private void initialize() {
+		buttons = new ArrayList<Button>();
+		
+		buttons.add(btnCard1);
+		buttons.add(btnCard2);
+		buttons.add(btnCard3);
+		buttons.add(btnCard4);
+		buttons.add(btnCard5);
+	}
+}

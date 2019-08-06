@@ -1,0 +1,80 @@
+package ui;
+
+import java.util.ArrayList;
+
+import application.HanabiAssistant;
+import entity.Card;
+import entity.Player;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+
+public class HandPaneController {
+	private Player player;
+	private boolean isMyHand;
+	
+	@FXML
+	private Button btnCard1;
+	@FXML
+	private Button btnCard2;
+	@FXML
+	private Button btnCard3;
+	@FXML
+	private Button btnCard4;
+	@FXML
+	private Button btnCard5;
+	
+	private ArrayList<Button> buttons;
+	
+	@FXML
+	private Button btnDiscard;
+	@FXML
+	private Button btnPutOnBoard;
+	
+	public HandPaneController() {
+	
+	}
+	
+	public void setHand(Player player) {
+		this.player = player;
+		
+		ArrayList<Card> tempHand = player.getHand();
+		
+		for (int i=0;i<tempHand.size();i++) {
+			if (this.isMyHand) {
+				buttons.get(i).setText(tempHand.get(i).getNumWithHint());
+			} else {
+				String temp = "";
+				temp += tempHand.get(i).getNum();
+				buttons.get(i).setText(temp);
+			}
+		}
+		
+//		btnCard1.setStyle("-fx-base: red;");
+//		btnCard2.setStyle("-fx-base: blue;");
+//		btnCard3.setStyle("-fx-base: green;");
+		btnCard4.setStyle("-fx-base: white; -fx-font-size:50px;");
+		btnCard5.setStyle("-fx-base: yellow;");
+	}
+	
+	private void setButtonRed(Button button) {
+		button.setStyle("-fx-base: red; -fx-font-size:50px;");
+	}
+	
+	public void setMyHand() {
+		isMyHand = true;
+	}
+	
+	@FXML
+	private void initialize() {
+		buttons = new ArrayList<Button>();
+		isMyHand = false;
+		
+		buttons.add(btnCard1);
+		buttons.add(btnCard2);
+		buttons.add(btnCard3);
+		buttons.add(btnCard4);
+		buttons.add(btnCard5);
+		
+	}
+}
