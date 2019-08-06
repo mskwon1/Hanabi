@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Queue;
 
 import application.HanabiAssistant;
 import entity.Player;
@@ -14,6 +15,11 @@ import logic.GameManager;
 public class RootLayoutController {
 	private HanabiAssistant assistant;
 	private GameManager gm;
+	
+	private HandPaneController myController;
+	private HandPaneController partnerController;
+	private TokenPaneController tokenController;
+	private UpboardPaneController upboardController;
 	
 	@FXML
 	private AnchorPane myHand;
@@ -41,11 +47,18 @@ public class RootLayoutController {
 	
 	@FXML
 	private void handleTurnEnd() {
-			AnchorPane tempPane = (AnchorPane) myHand.getChildren().get(0);
-			
-			myHand.getChildren().set(0, partnerHand.getChildren().get(0));
-			partnerHand.getChildren().add(tempPane);
-			
+		Queue<Player> turnQueue = gm.getTurnQueue();
+		
+		Player tempPlayer = turnQueue.poll();
+		myController.setHand(tempPlayer);
+		turnQueue.add(tempPlayer);
+		
+		tempPlayer = turnQueue.poll();
+		partnerController.setHand(tempPlayer);
+		turnQueue.add(tempPlayer);
+		
+		tokenController.refreshToken();
+		upboardController.refreshUpcards();
 	}
 	
 	@FXML
@@ -57,16 +70,21 @@ public class RootLayoutController {
 		gm = new GameManager(playerList);
 		gm.startGame();
 		
+		Queue<Player> turnQueue = gm.getTurnQueue();
+		
 		try {
 			// 내 핸드 SET
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(HanabiAssistant.class.getResource("/fxml/HandPane.fxml"));
 			AnchorPane loadedPane = (AnchorPane) loader.load();
 			
-			HandPaneController myController = loader.getController();
+			myController = loader.getController();
 			myController.setMyHand();
 			myController.setGM(gm);
-			myController.setHand(gm.getPlayer().get(0));
+			
+			Player tempPlayer = turnQueue.poll();
+			myController.setHand(tempPlayer);
+			turnQueue.add(tempPlayer);
 			
 			myHand.getChildren().add(loadedPane);
 
@@ -75,12 +93,35 @@ public class RootLayoutController {
 			loader.setLocation(HanabiAssistant.class.getResource("/fxml/HandPane.fxml"));
 			loadedPane = (AnchorPane) loader.load();
 			
-			HandPaneController partnerController = loader.getController();
+			partnerController = loader.getController();
 			partnerController.setPartnerHand();
 			partnerController.setGM(gm);
-			partnerController.setHand(gm.getPlayer().get(1));
 			
-			partnerHand.getChildren().add(loadedPane);					
+			tempPlayer = turnQueue.poll();
+			partnerController.setHand(tempPlayer);
+			turnQueue.add(tempPlayer);
+			
+			partnerHand.getChildren().add(loadedPane);
+	
+			// 토큰 SET
+			loader = new FXMLLoader();
+			loader.setLocation(HanabiAssistant.class.getResource("/fxml/TokenPane.fxml"));
+			loadedPane = (AnchorPane) loader.load();
+	
+			tokenController = loader.getController();
+			tokenController.setTokenManager(gm.getTokenManager());
+			
+			tokenPane.getChildren().add(loadedPane);
+			
+			// 업카드 SET
+			loader = new FXMLLoader();
+			loader.setLocation(HanabiAssistant.class.getResource("/fxml/UpboardPane.fxml"));
+			loadedPane = (AnchorPane) loader.load();
+	
+			upboardController = loader.getController();
+			upboardController.setUpcards(gm.getUpcards());
+			
+			upboardPane.getChildren().add(loadedPane);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

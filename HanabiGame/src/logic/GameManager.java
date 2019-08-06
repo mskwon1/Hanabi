@@ -26,7 +26,6 @@ public class GameManager {
 	
 	private boolean end;
 	private int endCounter;
-	
 	private Deck deck;
 	private Grave grave;
 	private Upcards upcards;
@@ -38,6 +37,8 @@ public class GameManager {
 		this.players.addAll(players);
 		turnQueue = new LinkedList<Player>();
 		turnQueue.addAll(players);
+		turnQueue.add(players.get(1));
+		turnQueue.add(players.get(0));
 		
 		hintManager = new HintManager();
 		tokenManager = new TokenManager();
@@ -56,6 +57,13 @@ public class GameManager {
 	}
 	
 	
+	public TokenManager getTokenManager() {
+		return tokenManager;
+	}
+
+	public Upcards getUpcards() {
+		return upcards;
+	}
 	
 	public void startGame() {
 		initialHandout();
@@ -114,12 +122,14 @@ public class GameManager {
 		Card targetCard = player.getHand().get(index);
 		
 		hintManager.checkHint(targetCard.getColor(), player);
+		tokenManager.useBlue();
 	}
 	
 	public void giveNumHint(Player player, int index) {
 		Card targetCard = player.getHand().get(index);
 		
 		hintManager.checkHint(targetCard.getNum(), player);
+		tokenManager.useBlue();
 	}
 	
 	private void initialHandout() {
@@ -443,13 +453,17 @@ public class GameManager {
 		return players;
 	}
 	
-	public static void main(String[] args) {
-		ArrayList<Player> playerList = new ArrayList<Player>();
-		playerList.add(new Player("A"));
-		playerList.add(new Player("B"));
-		
-		GameManager gm = new GameManager(playerList);
-		
-		gm.startGame();
+	public Queue<Player> getTurnQueue() {
+		return turnQueue;
 	}
+	
+//	public static void main(String[] args) {
+//		ArrayList<Player> playerList = new ArrayList<Player>();
+//		playerList.add(new Player("A"));
+//		playerList.add(new Player("B"));
+//		
+//		GameManager gm = new GameManager(playerList);
+//		
+//		gm.startGame();
+//	}
 }

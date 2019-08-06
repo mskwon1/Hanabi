@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HanabiGame/resources/fxml/UpboardPane.fxml.fxml&apos; to &apos;UpboardPane.fxml&apos;" description="Rename resource &apos;UpboardPane.fxml.fxml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="resources/fxml/UpboardPane.fxml.fxml" name="UpboardPane.fxml" stamp="1565093679425" updateReferences="true"/>
+</session>

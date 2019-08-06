@@ -1,0 +1,14 @@
+package ui;
+
+public class UpboardPaneController {
+	@FXML
+	private Label red;
+	@FXML
+	private Label blue;
+	@FXML
+	private Label green;
+	@FXML
+	private Label black;
+	@FXML
+	private Label yellow;
+}

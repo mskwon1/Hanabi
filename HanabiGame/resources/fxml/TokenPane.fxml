@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="60.0" minWidth="230.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.TokenPaneController">
+   <children>
+      <Circle fill="DODGERBLUE" layoutX="33.0" layoutY="30.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="20.0" />
+      <Circle fill="#ff1f1f" layoutX="134.0" layoutY="30.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="115.0" />
+      <Label fx:id="lbBlue" layoutX="75.0" layoutY="12.0" AnchorPane.leftAnchor="75.0">
+         <font>
+            <Font name="Times New Roman" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbRed" layoutX="164.0" layoutY="12.0" AnchorPane.leftAnchor="170.0">
+         <font>
+            <Font name="Times New Roman" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -7,7 +7,6 @@ import entity.Card;
 import entity.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.text.Font;
 import logic.GameManager;
 
 public class HandPaneController {
@@ -72,42 +71,88 @@ public class HandPaneController {
 	private void handleBtn2() {
 		if (isDiscard) {
 			gm.discard(player, 1);
-			
-			setHand(player);
+		} else if (isPutOnBoard) {
+			gm.putOnBoard(player, 1);
+		} else if (isGiveColorHint) {
+			gm.giveColorHint(player, 1);
+		} else if (isGiveNumHint) {
+			gm.giveNumHint(player, 1);
+		} else {
+			/*
+			 * 오류
+			 */
+			return;
 		}
-		
 
-		disableHand();
+		disableHand();	
+		setHand(player);
+		disableFlags();
 	}
 	
 	@FXML
 	private void handleBtn3() {
 		if (isDiscard) {
 			gm.discard(player, 2);
-			
-			setHand(player);
-			disableHand();
+		} else if (isPutOnBoard) {
+			gm.putOnBoard(player, 2);
+		} else if (isGiveColorHint) {
+			gm.giveColorHint(player, 2);
+		} else if (isGiveNumHint) {
+			gm.giveNumHint(player, 2);
+		} else {
+			/*
+			 * 오류
+			 */
+			return;
 		}
+
+		disableHand();	
+		setHand(player);
+		disableFlags();
 	}
 	
 	@FXML
 	private void handleBtn4() {
 		if (isDiscard) {
 			gm.discard(player, 3);
-			
-			setHand(player);
-			disableHand();
+		} else if (isPutOnBoard) {
+			gm.putOnBoard(player, 3);
+		} else if (isGiveColorHint) {
+			gm.giveColorHint(player, 3);
+		} else if (isGiveNumHint) {
+			gm.giveNumHint(player, 3);
+		} else {
+			/*
+			 * 오류
+			 */
+			return;
 		}
+
+		disableHand();	
+		setHand(player);
+		disableFlags();
 	}
 	
 	@FXML
 	private void handleBtn5() {
 		if (isDiscard) {
 			gm.discard(player, 4);
-			
-			setHand(player);
-			disableHand();
+		} else if (isPutOnBoard) {
+			gm.putOnBoard(player, 4);
+		} else if (isGiveColorHint) {
+			gm.giveColorHint(player, 4);
+		} else if (isGiveNumHint) {
+			gm.giveNumHint(player, 4);
+		} else {
+			/*
+			 * 오류
+			 */
+			return;
 		}
+
+		disableHand();	
+		setHand(player);
+		disableFlags();
 	}
 	
 	private void disableFlags() {

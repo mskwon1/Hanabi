@@ -2,16 +2,11 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="entity.Card"/>
-<fullyQualifiedTypeName name="entity.Player"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="board.Deck"/>
 <fullyQualifiedTypeName name="board.Grave"/>
-<fullyQualifiedTypeName name="board.Upcards"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="entity.Color"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -19,8 +14,17 @@
 <fullyQualifiedTypeName name="application.Hanabi"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
 <fullyQualifiedTypeName name="application.HanabiAssistant"/>
-<fullyQualifiedTypeName name="javafx.fxml.FXML"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="entity.Player"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="entity.Card"/>
+<fullyQualifiedTypeName name="javafx.scene.text.Font"/>
+<fullyQualifiedTypeName name="logic.GameManager"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="logic.TokenManager"/>
+<fullyQualifiedTypeName name="javafx.fxml.FXML"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Label"/>
+<fullyQualifiedTypeName name="board.Upcards"/>
 </qualifiedTypeNameHistroy>
