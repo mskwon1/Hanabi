@@ -1,0 +1,11 @@
+package ui;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
+public class ScorePaneController {
+	@FXML
+	private Label lbTurnCount;
+	@FXML
+	private Label lbScore;
+}
