@@ -1,9 +1,0 @@
-package entity;
-
-import javafx.scene.control.Button;
-
-public class CardButton extends Button {
-	private Card card;
-	
-	
-}
